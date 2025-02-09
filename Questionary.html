@@ -17,11 +17,11 @@
     
      <form id="survey-form" method="post" netlify>
         <label for="name" id="name-label" required>Введите ваше имя: <div class="brackets">(ну и может первую букву фамилии, если вы, например, Саша)
-          <input id="name" type="text" placeholder="Ваше имя" required></div></label>
+          <input name="name" id="name" type="text" placeholder="Ваше имя" required></div></label>
           <br>
-        <label for="experience" required>Сколько лет вы занимаетесь скалолазанием?<input id="number" type="number" min=0 max=15 placeholder="100" required></label>
+        <label for="experience" required>Сколько лет вы занимаетесь скалолазанием?<input name="years-of-experience" id="number" type="number" min=0 max=15 placeholder="100" required></label>
         <br> 
-        <label for="number-week" id="number-label" required>Сколько раз в неделю вы ходите на скалодром?<input id="number-week" type="number" min=0 max=7 placeholder="Я там живу" required></label>
+        <label for="number-week" id="number-label" required>Сколько раз в неделю вы ходите на скалодром?<input name="times-a-week" id="number-week" type="number" min=0 max=7 placeholder="Я там живу" required></label>
         <br>
 
         <span class="container" id="which-comfy">
@@ -135,21 +135,21 @@
       <!-- id="us5a" - usually 5a"-->
       <div class="usual-div">
   
-        <label><input type="checkbox" id="us5a" value="us5a">5a</label>
-        <label><input type="checkbox" id="us5b" value="us5b">5b</label>
-        <label><input type="checkbox" id="us5c" value="us5b">5c</label>
-        <label><input type="checkbox" id="us6a" value="us5b">6a</label>
-        <label><input type="checkbox" id="us6b" value="us5b">6b</label>
-        <label><input type="checkbox" id="us6c" value="us5b">6c</label>
-        <label><input type="checkbox" id="us7a" value="us5b">7a</label>
-        <label><input type="checkbox" id="us7b" value="us5b">7b</label>
-        <label><input type="checkbox" id="us7c" value="us5b">7c</label>
+        <label><input type="checkbox" name="usually" id="us5a" value="us5a">5a</label>
+        <label><input type="checkbox" name="usually" id="us5b" value="us5b">5b</label>
+        <label><input type="checkbox" name="usually" id="us5c" value="us5b">5c</label>
+        <label><input type="checkbox" name="usually" id="us6a" value="us5b">6a</label>
+        <label><input type="checkbox" name="usually" id="us6b" value="us5b">6b</label>
+        <label><input type="checkbox" name="usually" id="us6c" value="us5b">6c</label>
+        <label><input type="checkbox" name="usually" id="us7a" value="us5b">7a</label>
+        <label><input type="checkbox" name="usually" id="us7b" value="us5b">7b</label>
+        <label><input type="checkbox" name="usually" id="us7c" value="us5b">7c</label>
       </p>
-      <label><input type="checkbox" id="us7c" value="us5b">Не знаю, мне тренер придумывает/ребята показывают¯\_(ツ)_/¯</label>
+      <label><input type="checkbox" name="usually" id="us7c" value="us5b">Не знаю, мне тренер придумывает/ребята показывают¯\_(ツ)_/¯</label>
     </div>
 </fieldset>
 
-        <label>Какой стиль лазания вам нравится больше?<select required id="dropdown" type="dropdown" required>
+        <label>Какой стиль лазания вам нравится больше?<select required id="dropdown" type="dropdown" name="style"required>
           <option value="static">Статика</option>
           <option value="dynamic">Динамика</option>
           <option value="both-static-and-dynamic">И то, и другое</option>
@@ -165,12 +165,12 @@
 </fieldset>
 
 <label for="why" >Почему вы занимаетесь скалолазанием, что вас в нем привлекает?
- <textarea id="why" required></textarea>
+ <textarea id="why" name="why" required></textarea>
 </label>
 
 <label for="wishes" >Есть ли у вас пожелания/слова благодарности/советы своим собратьям-скалолазам?
   <br>
-  <textarea id="wishes" required></textarea>
+  <textarea id="wishes" name="wishes" required></textarea>
  </label>
  <br>
  И последний, самый сложный вопрос...
