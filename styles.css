@@ -220,12 +220,12 @@ box-shadow: 0 0 5px 3px #624a4a;
 .invisible-button:checked ~ label {
     color: rgb(98, 0, 255);
     clear: none;
-    margin: 2px 0 0 2px;
   }
 
 .change-div {
   text-align: center;
     clear: none;
+    padding: 3vw;
 }
 
   .change-div label {
