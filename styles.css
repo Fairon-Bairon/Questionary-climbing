@@ -195,7 +195,7 @@ box-shadow: 0 0 5px 3px #624a4a;
 
 }
 
-.target {
+.target:not(#right) {
     width: 15vw;
  min-width: 100px;
     height: 5vw;
