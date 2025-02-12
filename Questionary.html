@@ -9,7 +9,7 @@
     </title>
   </head>
   <body>
-   <fieldset id="questionary-fieldset"><h1 id="index-h1">Скалолазное Исследование</h1></fieldset>
+   <fieldset id="questionary-fieldset"><h1>Скалолазное Исследование</h1></fieldset>
     <p id="description">Небольшой опрос по нашим скалодромным делам</p>
     <img class="horiz-image" src="https://www.shutterstock.com/image-vector/silhouette-rock-climber-climbing-overhang-600nw-2068834883.jpg">
 
@@ -249,6 +249,29 @@
       });
     }
     
+
+    for (gym of gyms) {
+    gym.addEventListener("touchstart", function(e){
+        let selected = e.target;
+  
+        rightBox.addEventListener("touchmove", function(e){
+            e.preventDefault();
+        });
+        rightBox.addEventListener("touchend", function(e){
+            rightBox.appendChild(selected);
+            selected = null;
+        });
+      
+        gym1.addEventListener("touchmove", function(e){
+            e.preventDefault();
+        });
+        gym1.addEventListener("touchend", function(e){
+            gym1.appendChild(selected);
+            selected = null;
+        });
+       } )}
+
+
 
       for (discipline of disciplines) {
     discipline.addEventListener("dragstart", function(e){
