@@ -95,6 +95,7 @@ display: block;
 border: outset #785354;
 border-radius: 50% 20% / 10% 40%;
 width: 80vw;
+    max-width: 750px;
 
 }
 
