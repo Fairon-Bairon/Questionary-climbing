@@ -24,8 +24,8 @@
         <label for="number-week" id="number-label" required>Сколько раз в неделю вы ходите на скалодром?<input name="number-week" id="number-week" type="number" min=0 max=7 placeholder="Я там живу" required></label>
         <br>
 
-        <span class="container" id="which-comfy">
-      Какой вид лазания вы предпочитаете?</span>
+        <span class="container" id="which-comfy"><label>
+      Какой вид лазания вы предпочитаете?</label></span>
       <span class="container" id="comfy">
         <div  id="right1">
         <div id="bouldering" class="discipline" draggable="true">Боулдеринг</div>
@@ -34,10 +34,10 @@
         <div id="speed" class="discipline" draggable="true">Скорость</div>
         </div>
         <div id="left1">
-          <div id="discipline1" class="target">Обожаю</div>
-          <div id="discipline2" class="target">Плюс вайб</div>
-          <div id="discipline3" class="target">Середнячок</div>
-          <div id="discipline4" class="target">Лучше пойду поболтаю</div>
+          <div id="discipline1" class="targetD">Обожаю</div>
+          <div id="discipline2" class="targetD">Плюс вайб</div>
+          <div id="discipline3" class="targetD">Середнячок</div>
+          <div id="discipline4" class="targetD">Лучше пойду поболтаю</div>
         </div>
         </span>
 <br>
@@ -56,10 +56,10 @@
       </div>
       
       <div id="left">
-        <div id="gym1" class="target">Удобнее всего</div>
-        <div id="gym2" class="target">Не так удобно</div>
-        <div id="gym3" class="target">Где там уже эта маршрутка?</div>
-        <div id="gym4" class="target">А может, ну его?</div>
+        <div id="gym1" class="targetG">Удобнее всего</div>
+        <div id="gym2" class="targetG">Не так удобно</div>
+        <div id="gym3" class="targetG">Где там уже эта маршрутка?</div>
+        <div id="gym4" class="targetG">А может, ну его?</div>
       </div>
     </span>
     
@@ -173,6 +173,7 @@
   <textarea id="wishes" name="wishes" required></textarea>
  </label>
  <br>
+ <label>
  И последний, самый сложный вопрос...
  <br>
  Представьте, что вы лазаете с некой девушкой по имени Даша, и продолжите диалог:
@@ -186,20 +187,21 @@
    <input type="text" name="clave1" size="20" required>
   </label>
       <input type="button" class="small-button" value="Проверить" onClick="checkAnswers()">
-<br>
+</label>
+      <br>
   <button id="submit" type="submit">Отправить данные научному консилиуму</button>
 
-     
+
   <script>
     let gyms = document.getElementsByClassName('gym');
-    let rightBox = document.getElementById('right');
+    let right = document.getElementById('right');
     let gym1 = document.getElementById('gym1');
     let gym2 = document.getElementById('gym2');
     let gym3 = document.getElementById('gym3');
     let gym4 = document.getElementById('gym4');
 
     let disciplines = document.getElementsByClassName('discipline');
-    let rightBox1 = document.getElementById('right1');
+    let right1 = document.getElementById('right1');
     let discipline1 = document.getElementById('discipline1'); 
     let discipline2 = document.getElementById('discipline2');
     let discipline3 = document.getElementById('discipline3');
@@ -209,11 +211,11 @@
     gym.addEventListener("dragstart", function(e){
         let selected = e.target;
   
-        rightBox.addEventListener("dragover", function(e){
+        right.addEventListener("dragover", function(e){
             e.preventDefault();
         });
-        rightBox.addEventListener("drop", function(e){
-            rightBox.appendChild(selected);
+        right.addEventListener("drop", function(e){
+            right.appendChild(selected);
             selected = null;
         });
       
@@ -221,67 +223,193 @@
             e.preventDefault();
         });
         gym1.addEventListener("drop", function(e){
+          if (gym1.childElementCount == 0){
             gym1.appendChild(selected);
             selected = null;
+          }
         });
     
         gym2.addEventListener("dragover", function(e){
             e.preventDefault();
         });
         gym2.addEventListener("drop", function(e){
+          if (gym2.childElementCount == 0){
             gym2.appendChild(selected);
             selected = null;
+          }
         });
         gym3.addEventListener("dragover", function(e){
             e.preventDefault();
         });
         gym3.addEventListener("drop", function(e){
+          if (gym3.childElementCount == 0){
             gym3.appendChild(selected);
             selected = null;
+          }
         });
         gym4.addEventListener("dragover", function(e){
             e.preventDefault();
         });
         gym4.addEventListener("drop", function(e){
+          if (gym4.childElementCount == 0){
             gym4.appendChild(selected);
             selected = null;
+          }
           });
       });
     }
     
 
-    for (gym of gyms) {
-    gym.addEventListener("touchstart", function(e){
-        let selected = e.target;
-  
-        rightBox.addEventListener("touchmove", function(e){
-            e.preventDefault();
-        });
-        rightBox.addEventListener("touchend", function(e){
-            rightBox.appendChild(selected);
-            selected = null;
-        });
-      
-        gym1.addEventListener("touchmove", function(e){
-            e.preventDefault();
-        });
-        gym1.addEventListener("touchend", function(e){
-            gym1.appendChild(selected);
-            selected = null;
-        });
-       } )}
+  // touchscreen for gyms
+    const targetsG = document.querySelectorAll('.targetG');
 
+    let selected = null;
+    var lastMove = null;
+
+    function handleDragStart(e) {
+    selected = e.target; // Store the element being dragged
+    selected.classList.add('dragging'); // Add a class for visual feedback (optional)
+    lastMove = handleDragStart(e);
+    // For touch, prevent default behavior (scrolling)
+    if (e.type === 'touchstart') {
+        e.preventDefault();
+    }
+    
+}
+
+function handleDragOver(e) {
+    e.preventDefault(); // Allow dropping
+}
+
+function handleDrop(e) {
+    e.preventDefault(); // Prevent default drop behavior
+
+    if (selected) {
+        this.appendChild(selected); // 'this' refers to the drop target
+        selected.classList.remove('dragging'); // Remove dragging class (optional)
+        selected = null; // Clear the selected element
+    }
+}
+
+
+for (let gym of gyms) {
+    // Mouse events
+    gym.addEventListener('dragstart', handleDragStart);
+
+    // Touch events
+    gym.addEventListener('touchstart', handleDragStart);
+    gym.addEventListener('touchmove', function ggg(e) {
+        // Prevent scrolling while dragging
+        e.preventDefault();
+        lastMove = ggg(e);
+        if (selected) {
+            // Get touch position relative to the document
+            const touch = e.touches[0];
+            selected.style.position = 'absolute';
+            selected.style.left = touch.pageX - selected.offsetWidth / 2 + 'px';
+            selected.style.top = touch.pageY - selected.offsetHeight / 2 + 'px';
+        }
+    });
+    gym.addEventListener('touchend', function(e) {
+        e.preventDefault();
+      
+        if (selected!=0) {
+            // Find the drop target under the touch point
+            const touch = e.changedTouches[0];
+            const dropTargetG = document.elementFromPoint(touch.clientX, touch.clientY);
+            
+                if (dropTargetG === gym1 && gym1.childElementCount === 0) {
+              gym1.appendChild(selected);}
+
+              if (dropTargetG === gym2 && gym2.childElementCount === 0) {
+              gym2.appendChild(selected);}
+              
+              if (dropTargetG === gym3 && gym3.childElementCount === 0) {
+              gym3.appendChild(selected);}
+
+              if (dropTargetG === gym4 && gym4.childElementCount === 0) {
+              gym4.appendChild(selected);}
+
+              if (dropTargetG === right) {
+              right.appendChild(selected);}
+
+              else {
+              return
+              }
+
+              selected.classList.remove('dragging');
+            selected = null;
+        }}
+    );
+    gym.setAttribute('draggable', true); // Make sure the element is draggable
+}
+       // end touchscreen for gyms
+
+
+       //touchscreen for disciplines
+
+       const targetsD = document.querySelectorAll('.targetD');
+
+for (let discipline of disciplines) {
+discipline.addEventListener('touchstart', handleDragStart);
+discipline.addEventListener('touchmove', function ggg(e) {
+    // Prevent scrolling while dragging
+    e.preventDefault();
+    lastMove = ggg(e);
+    if (selected) {
+        // Get touch position relative to the document
+        const touch = e.touches[0];
+        selected.style.position = 'absolute';
+        selected.style.left = touch.pageX - selected.offsetWidth / 2 + 'px';
+        selected.style.top = touch.pageY - selected.offsetHeight / 2 + 'px';
+    }
+});
+discipline.addEventListener('touchend', function(e) {
+    e.preventDefault();
+  
+    if (selected!=0) {
+        const touch = e.changedTouches[0];
+        const dropTargetD = document.elementFromPoint(touch.clientX, touch.clientY);
+        
+            if (dropTargetD === discipline1 && discipline1.childElementCount == 0) {
+              discipline1.appendChild(selected);}
+
+          if (dropTargetD === discipline2 && discipline2.childElementCount == 0) {
+            discipline2.appendChild(selected);}
+          
+          if (dropTargetD === discipline3 && discipline3.childElementCount == 0) {
+            discipline3.appendChild(selected);}
+
+          if (dropTargetD === discipline4 && discipline4.childElementCount == 0) {
+            discipline4.appendChild(selected);}
+
+            if (dropTargetD === right1) {
+              right1.appendChild(selected);}
+
+            else {
+              return;
+            }
+        selected.classList.remove('dragging');
+        selected = null;
+    }}
+);
+
+
+discipline.setAttribute('draggable', true); 
+}
+
+       // end touchscreen for disciplines
 
 
       for (discipline of disciplines) {
     discipline.addEventListener("dragstart", function(e){
         let selected = e.target;
   
-        rightBox1.addEventListener("dragover", function(e){
+        right1.addEventListener("dragover", function(e){
             e.preventDefault();
         });
-        rightBox1.addEventListener("drop", function(e){
-            rightBox1.appendChild(selected);
+        right1.addEventListener("drop", function(e){
+            right1.appendChild(selected);
             selected = null;
         });
       
@@ -289,39 +417,48 @@
             e.preventDefault();
         });
         discipline1.addEventListener("drop", function(e){
+          if (discipline1.childElementCount == 0){
             discipline1.appendChild(selected);
             selected = null;
+           
+          }
         });
     
         discipline2.addEventListener("dragover", function(e){
             e.preventDefault();
         });
         discipline2.addEventListener("drop", function(e){
+          if (discipline2.childElementCount == 0){
           discipline2.appendChild(selected);
             selected = null;
+          }
         });
         discipline3.addEventListener("dragover", function(e){
             e.preventDefault();
         });
         discipline3.addEventListener("drop", function(e){
+          if (discipline3.childElementCount == 0){
           discipline3.appendChild(selected);
             selected = null;
+          }
         });
         discipline4.addEventListener("dragover", function(e){
             e.preventDefault();
         });
         discipline4.addEventListener("drop", function(e){
+          if (discipline4.childElementCount == 0){
           discipline4.appendChild(selected);
             selected = null;
+          }
           });
         });  
       }
 
+
+
 //Dasha
 
 let failedAttempts = 3;
-
-
 
 function checkAnswers(){
    Student_answer = document.querySelector('[name="clave1"]').value
@@ -345,9 +482,7 @@ function checkAnswers(){
      {  
       alert("Не знаете вы Дашу...\nОзарение снизойдет на вас через "+(failedAttempts)+" ...");
       failedAttempts--;
-  
       return false;
-
     }
 
    if (Student_answer === Correct_answer) {
@@ -375,26 +510,5 @@ function checkAnswers(){
 
     }
 </script>
-            
-              
 </form>
     </body>
-  <!--💪	&#128170;
-    👀	&#128064;
-    🏃	&#127939;
-    💃	&#128131;
-    〽	&#12349;
-    🆙	&#127385;
-    👟	&#128095;
-    🔒	&#128274;
-    📣	&#128227;
-    🗿	&#128511;
-    🏆	&#127942;
-    ⚽	&#9917;
-  🗻	&#128507;
-  🌋	&#127755;
-  ⛺	&#9978;
-  🌄	&#127748;
-🌅	&#127749;
-🚗	&#128663;
-    -->
