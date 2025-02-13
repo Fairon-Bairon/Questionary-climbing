@@ -86,7 +86,7 @@ form {
 h1, p  {
     text-align: center;}
 
-p {
+p, label {
 font-size: 1.5rem;
     }
 
@@ -145,7 +145,7 @@ input[type=reset] {
 .container {
     width: 100%;
     min-height: 10vh;
-    max-height: 500px;
+    /*max-height: 500px;*/
     background:   #f9e2d7;
     color: #2b1619;
     display: flex;
@@ -161,17 +161,16 @@ box-shadow: 0 0 5px 3px #624a4a;
 #left, #right, #right1, #left1 {
     width: 35vw;
     min-height: 300px;
-    max-height: 490px;
     min-width: 100px;
-    border: 2px dashed white;
+    border: 3px dashed white;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
    align-items: center;
    justify-content: center;
-
-
+margin: auto;
+border-collapse: collapse;
 }
 
 .gym, .discipline {
@@ -195,10 +194,9 @@ box-shadow: 0 0 5px 3px #624a4a;
 
 }
 
-.target:not(#right) {
+.targetG, .targetD {
     width: 15vw;
  min-width: 100px;
-    height: 5vw;
   min-height: 60px;
     border: 2px dashed gray;
     margin: 10px;
@@ -302,6 +300,7 @@ button{
     margin: auto auto;
     display: block;
     border-radius: 15px;
+    font-size: 1rem;
 }
 
 .small-button {
@@ -310,6 +309,7 @@ button{
     display: inline-block;
     width: 10vw;
     min-width: 100px;
+    font-size: 1rem;
 }
 #index-button {
     width: 20vw;
@@ -320,6 +320,45 @@ margin: 0 10px;
 font-size: 1rem;
 }
 /*
+#gym1, #discipline1
+{
+    background-color:  #e4bcac!important;
+}
+#gym1 > .gym
+{
+    background-color:  #e4bcac!important;
+}
+
+#gym2, #discipline2
+{
+    background-color:   #da9a97!important;
+}
+#gym2 > .gym
+{
+    background-color:   #da9a97!important;
+}
+
+
+#gym3, #discipline3
+{
+    background-color:    #b47877!important;
+}
+#gym3 > .gym
+{
+    background-color:   #b47877!important;
+}
+
+#gym4, #discipline4
+{
+    background-color:     #bcbcbc!important;
+}
+#gym4 > .gym
+{
+    background-color:    #bcbcbc!important;
+}
+*/
+
+/* 
  border-radius: 50% 20% / 10% 40%;
  border-radius: 70% 30% / 50% 140%;
  color: 
